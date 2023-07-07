@@ -3,6 +3,16 @@ const IPHONE = document.querySelectorAll(".iphone");
 const HUAWEI = document.querySelectorAll(".Huawei");
 const SAMSUNG = document.querySelectorAll(".Samsung");
 const container = document.querySelector(".container");
+var basketnumber = document.querySelector(".basket_number");
+const addBasket = document.querySelectorAll(".add_to_basket");
+var count = 0;
+addBasket.forEach((add_to_basket) => {
+  add_to_basket.addEventListener("click", function () {
+    count++;
+    console.log(count);
+    basketnumber.innerHTML = count;
+  });
+});
 
 MENU.forEach((choice) => {
   choice.addEventListener("click", (e) => {
