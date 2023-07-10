@@ -12,7 +12,9 @@ const clearBasket = document.querySelector(".clear_text");
 const itemsContainer = document.querySelector(".items_container");
 const products = document.querySelectorAll(".mphone");
 const image = document.querySelectorAll(".phone");
+
 var count = 0;
+var count2 = 0;
 
 //----------
 
@@ -22,57 +24,103 @@ clearBasket.addEventListener("click", () => {
   while (delChild) {
     childElements.removeChild(delChild);
     delChild = childElements.lastChild;
+    check = "";
   }
   count = 0;
 
   number_cont.classList.add("hidden");
 });
 
-// basket.addEventListener("mouseover", () => {
-//   itemsBasket.classList.remove("hidden");
-// });
-// basket.addEventListener("mouseout", () => {
-//   itemsBasket.classList.add("hidden");
-// });
-basket.addEventListener("click", () => {
-  if (itemsBasket.classList.contains("hidden")) {
-    itemsBasket.classList.remove("hidden");
-  } else {
-    itemsBasket.classList.add("hidden");
-  }
+basket.addEventListener("mouseover", () => {
+  itemsBasket.classList.remove("hidden");
 });
+basket.addEventListener("mouseout", () => {
+  itemsBasket.classList.add("hidden");
+});
+// basket.addEventListener("click", () => {
+//   if (itemsBasket.classList.contains("hidden")) {
+//     itemsBasket.classList.remove("hidden");
+//   }
+// });
+//----------
 
+//----------
+var check = "";
 addBasket.forEach((add_to_basket) => {
   add_to_basket.addEventListener("click", function () {
-    count++;
-    basketnumber.innerHTML = count;
-    number_cont.classList.remove("hidden");
-    var item_crea = document.createElement("div");
-    item_crea.className = "item_added";
-    itemsContainer.appendChild(item_crea);
-    var smallphone = document.createElement("img");
-    smallphone.className = "small_phone";
-    var img_src = add_to_basket.parentElement.parentElement
+    var check2 = add_to_basket.parentElement.parentElement
       .querySelector(".phone")
       .getAttribute("src");
-    smallphone.setAttribute("src", img_src);
-    item_crea.appendChild(smallphone);
-    var item_name = document.createElement("p");
-    item_name.className = "phone_name";
-    item_name.innerHTML =
-      add_to_basket.parentElement.parentElement.querySelector(
-        ".item_name"
-      ).textContent;
+    if (check2 !== check) {
+      count2 = 0;
+      count++;
+      count2++;
+      basketnumber.innerHTML = count;
+      number_cont.classList.remove("hidden");
 
-    item_crea.appendChild(item_name);
-    var item_price = document.createElement("p");
-    item_price.className = "phone_price";
+      // console.log("Wybrano inny telefon");
 
-    item_price.textContent =
-      "Cena: " +
-      add_to_basket.parentElement.querySelector(".price_sale").textContent;
+      const item_crea = document.createElement("div");
+      item_crea.className = "item_added";
+      item_crea.setAttribute("id", count);
+      // item_crea.id = count;
+      itemsContainer.appendChild(item_crea);
+      const smallphone = document.createElement("img");
+      smallphone.className = "small_phone";
+      const img_src = add_to_basket.parentElement.parentElement
+        .querySelector(".phone")
+        .getAttribute("src");
+      smallphone.setAttribute("src", img_src);
+      item_crea.appendChild(smallphone);
+      const item_name = document.createElement("p");
+      item_name.className = "phone_name";
+      item_name.innerHTML =
+        add_to_basket.parentElement.parentElement.querySelector(
+          ".item_name"
+        ).textContent;
 
-    item_crea.appendChild(item_price);
+      item_crea.appendChild(item_name);
+      const item_price = document.createElement("p");
+      item_price.className = "phone_price";
+
+      item_price.textContent =
+        "Cena: " +
+        add_to_basket.parentElement.querySelector(".price_sale").textContent;
+
+      item_crea.appendChild(item_price);
+
+      const item_count = document.createElement("p");
+      item_count.className = "item_count";
+
+      item_count.textContent = "Ilość " + count2;
+
+      item_crea.appendChild(item_count);
+
+      //-------
+      const bin = document.createElement("img");
+      bin.className = "bin_img";
+      bin.setAttribute("src", "images/bin.png");
+      item_crea.appendChild(bin);
+      bin.addEventListener("click", () => {
+        const id = bin.parentElement.id;
+        console.log(id);
+        console.log(bin.parentElement);
+        bin.parentElement.remove(id);
+        count = count - 1;
+        basketnumber.innerHTML = count;
+        if (count === 0) {
+          number_cont.classList.add("hidden");
+        }
+      });
+
+      check = check2;
+    } else {
+      count2++;
+      // console.log("wybrano ten sa telefon");
+      const itemcount = document.querySelector(".item_count");
+      console.log(itemcount);
+      itemcount.textContent = "Ilość " + count2;
+    }
   });
 });
 
