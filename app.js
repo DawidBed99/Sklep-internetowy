@@ -133,7 +133,7 @@ addBasket.forEach((add_to_basket) => {
 
           // item_count.textContent = count3;
         });
-
+        //---------------------------------------------------------------------------------
         // });
         // console.log("count3 " + count3);
         // console.log(document.querySelector(".item_added"));
