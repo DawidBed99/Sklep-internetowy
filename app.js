@@ -74,6 +74,7 @@ function createBasketElementPhoto(img_src) {
   return smallphone;
 }
 
+//---------------------------------------------------------------------------------
 addBasket.forEach((add_to_basket) => {
   add_to_basket.addEventListener("click", function () {
     //Obliczanie lacznej ceny -----------------
