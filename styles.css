@@ -298,6 +298,7 @@ h1 {
   position: absolute;
   left: 60px;
   top: 30px;
+  font-size: 10px;
 }
 .bin_img {
   position: absolute;
@@ -314,20 +315,45 @@ h1 {
 .item_count {
   position: absolute;
   color: black;
-  left: 120px;
-  top: 12px;
-  font-size: 12px;
+  left: 150px;
+  top: 30px;
+  font-size: 10px;
 }
 .price_added {
   position: absolute;
   margin: 12px 0 12px;
-  text-align: center;
   width: 100%;
   font-weight: bold;
   text-align: center;
   color: black;
-  font-weight: bold;
   top: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.price_all,
+.price_all2 {
+  margin-right: 4px;
+}
+
+.currency {
+  position: absolute;
+  left: 189px;
+  color: green;
+  font-weight: bold;
+}
+.currency2 {
+  position: absolute;
+  left: 163px;
+  color: green;
+  font-weight: bold;
+}
+.quantity {
+  position: absolute;
+  color: black;
+  left: 125px;
+  top: 30px;
+  font-size: 10px;
 }
 
 @media screen and (width<=700px) {
